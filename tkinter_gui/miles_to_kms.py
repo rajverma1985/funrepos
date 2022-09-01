@@ -7,27 +7,42 @@ window.title("Miles to Km convertor")
 window.minsize(width=300, height=150)
 window.config(padx=40, pady=40)
 
+
+def cal_button():
+    input_text = float(take_input.get())
+    if type(input_text)  is float:
+        kms_in_miles = "{:.2f}".format(1.6 * input_text)
+        results.config(text=kms_in_miles)
+    else:
+        results.config(text="Please enter an integer")
+
+
 # Entry for taking input
-take_input = Entry(bd=2, width=10)
+take_input = Entry(bd=2, width=5)
 take_input.grid(column=1, row=0)
 
 # Miles label
-new_label = Label(font=("Arial", 18, "bold"), text="Miles")
-new_label.grid(column=2, row=0)
+miles = Label(font=("Arial", 18), text="Miles")
+miles.grid(column=2, row=0)
 window.config(padx=20, pady=20)
 
 # Equals label
-new_label = Label(font=("Arial", 18, "bold"), text="Equals")
-new_label.grid(column=0, row=1)
+equals = Label(font=("Arial", 18), text="Equals")
+equals.grid(column=0, row=1)
+window.config(padx=20, pady=20)
+
+# results label
+results = Label(font=("Arial", 18, "bold"), text="0")
+results.grid(column=1, row=1)
 window.config(padx=20, pady=20)
 
 #kms label
-new_label = Label(font=("Arial", 18, "bold"), text="KM's")
-new_label.grid(column=2, row=1)
+kms = Label(font=("Arial", 18), text="KM's")
+kms.grid(column=2, row=1)
 window.config(padx=20, pady=20)
 
 # creating buttons, event on button click
-button = Button(text="Calculate")
-button.grid(column=1, row=2)
+calculate = Button(text="Calculate", command=cal_button)
+calculate.grid(column=1, row=2)
 
 window.mainloop()
