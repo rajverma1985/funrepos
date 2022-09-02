@@ -1,4 +1,12 @@
 from tkinter import *
+
+# TODO:
+#  1. add timer HEADING on top of tomato
+#  2. add reset and start labels
+#  3. add clock in the tomato for changes in time
+#  4.  add checkmark for cycles of work and break done
+#  5. use grid instead of pack for canvas.
+
 # ---------------------------- CONSTANTS ------------------------------- #
 PINK = "#e2979c"
 RED = "#e7305b"
