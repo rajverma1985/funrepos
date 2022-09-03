@@ -1,3 +1,4 @@
+import time
 from tkinter import *
 
 # TODO:
@@ -17,7 +18,8 @@ WORK_MIN = 25
 SHORT_BREAK_MIN = 5
 LONG_BREAK_MIN = 20
 
-# ---------------------------- TIMER RESET ------------------------------- # 
+
+# ---------------------------- TIMER RESET ------------------------------- #
 
 # ---------------------------- TIMER MECHANISM ------------------------------- # 
 
@@ -25,14 +27,41 @@ LONG_BREAK_MIN = 20
 
 # ---------------------------- UI SETUP ------------------------------- #
 
-# create base window for the app
+def start_timer():
+    time.time()
 
+
+# create base window for the app
 window = Tk()
-window.title("promodoro")
+window.title("pomodoro")
 window.config(padx=100, pady=100, bg="YELLOW")
 canvas = Canvas(width=200, height=300, bg="YELLOW", highlightthickness=0)
 t_image = PhotoImage(file="./tomato.png")
 canvas.create_image(100, 100, image=t_image)
-canvas.pack()
+canvas.create_text(100, 110, text="00:00", font=("Arial", 20, "bold"))
+canvas.grid(column=1, row=1)
+
+# Timer, clock and  labels
+timer_label = Label(font=("Arial", 16, "bold"), text="TIMER", bg=YELLOW)
+timer_label.grid(column=1, row=0)
+tick_label = Label(font=("Arial", 16, "bold"), text="✓", bg=YELLOW)
+tick_label.grid(column=1, row=3)
+
+
+# Start and reset buttons
+
+
+def reset_timer():
+    pass
+
+
+# creating buttons, event on button click
+start_button = Button(text="Start", command=start_timer)
+reset_button = Button(text="Reset", command=reset_timer)
+
+start_button.grid(column=0, row=2)
+reset_button.grid(column=2, row=2)
+
+# Just in case Entry
 
 window.mainloop()
