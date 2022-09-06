@@ -1,3 +1,4 @@
+import math
 import time
 from tkinter import *
 
@@ -27,11 +28,19 @@ LONG_BREAK_MIN = 20
 
 # ---------------------------- UI SETUP ------------------------------- #
 
-def countdown():
-    window.....
-def start_timer(var):
-    canvas.itemconfig(timer, text=var)
+def countdown(count):
+    minutes = math.floor(count / 60)
+    secs = count % 60
+    if secs < 10:
+        secs = f"0{secs}"
+    canvas.itemconfig(timer, text=f'{minutes}:{secs}')
+    if count > 0:
+        window.after(1000, countdown, count - 1)
 
+
+def start_timer():
+    # get the total seconds for the countdown
+    countdown(5 * 60)
 
 # create base window for the app
 window = Tk()
