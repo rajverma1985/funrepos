@@ -5,3 +5,4 @@ Projects in this repo:
 2. nato_phonetic >> phonetic code generator for any words
 3. states_game >> unitedstates state identification
 4. tkinter_gui >> GUI, how to write gui in tkinter
+5. promodoro >> GUI timer for activites
