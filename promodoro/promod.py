@@ -15,9 +15,10 @@ RED = "#e7305b"
 GREEN = "#9bdeac"
 YELLOW = "#f7f5dd"
 FONT_NAME = "Courier"
-WORK_MIN = 25
-SHORT_BREAK_MIN = 5
-LONG_BREAK_MIN = 20
+WORK_MIN = .1
+SHORT_BREAK_MIN = .1
+LONG_BREAK_MIN = .1
+REPS = 0
 
 
 # ---------------------------- TIMER RESET ------------------------------- #
@@ -28,6 +29,26 @@ LONG_BREAK_MIN = 20
 
 # ---------------------------- UI SETUP ------------------------------- #
 
+
+def start_timer():
+    global REPS
+    REPS += 1
+    work_sec = WORK_MIN * 60
+    short_break_secs = SHORT_BREAK_MIN * 60
+    long_break_secs = LONG_BREAK_MIN * 60
+
+    # get the total seconds for the countdown
+    if REPS % 8 == 0:
+        countdown(long_break_secs)
+        timer_label.config(text="LONG BREAK", fg=RED)
+    elif REPS % 2 == 0 and REPS != 8:
+        countdown(short_break_secs)
+        timer_label.config(text="SHORT BREAK", fg=PINK)
+    else:
+        countdown(work_sec)
+        timer_label.config(text="TIME TO WORK", fg=GREEN)
+
+
 def countdown(count):
     minutes = math.floor(count / 60)
     secs = count % 60
@@ -36,11 +57,15 @@ def countdown(count):
     canvas.itemconfig(timer, text=f'{minutes}:{secs}')
     if count > 0:
         window.after(1000, countdown, count - 1)
+    else:
+        start_timer()
+        # check reps and add a check mark to the timer
+        total_sessions = math.floor(REPS/2)
 
 
-def start_timer():
-    # get the total seconds for the countdown
-    countdown(5 * 60)
+
+tick_label.config(font=("Arial", 20, "bold"), text="✓", bg=YELLOW, fg=GREEN)
+
 
 # create base window for the app
 window = Tk()
@@ -55,7 +80,7 @@ canvas.grid(column=1, row=1)
 # Timer, clock and  labels
 timer_label = Label(font=("Arial", 20, "bold"), text="TIMER", bg=YELLOW, fg=GREEN)
 timer_label.grid(column=1, row=0)
-tick_label = Label(font=("Arial", 20, "bold"), text="✓", bg=YELLOW, fg=GREEN)
+tick_label = Label(font=("Arial", 20, "bold"), bg=YELLOW, fg=GREEN)
 tick_label.grid(column=1, row=3)
 
 
