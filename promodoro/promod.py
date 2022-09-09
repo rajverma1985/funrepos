@@ -19,6 +19,7 @@ WORK_MIN = .1
 SHORT_BREAK_MIN = .1
 LONG_BREAK_MIN = .1
 REPS = 0
+TIMER = None
 
 
 # ---------------------------- TIMER RESET ------------------------------- #
@@ -56,15 +57,16 @@ def countdown(count):
         secs = f"0{secs}"
     canvas.itemconfig(timer, text=f'{minutes}:{secs}')
     if count > 0:
-        window.after(1000, countdown, count - 1)
+        global TIMER
+        TIMER = window.after(1000, countdown, count - 1)
     else:
         start_timer()
         # check reps and add a check mark to the timer
-        total_sessions = math.floor(REPS/2)
-
-
-
-tick_label.config(font=("Arial", 20, "bold"), text="✓", bg=YELLOW, fg=GREEN)
+        checkmark = ""
+        total_sessions = math.floor(REPS / 2)
+        for _ in range(total_sessions):
+            checkmark += "✓"
+        tick_label.config(font=("Arial", 20, "bold"), text=checkmark, bg=YELLOW, fg=GREEN)
 
 
 # create base window for the app
@@ -86,7 +88,13 @@ tick_label.grid(column=1, row=3)
 
 # Start and reset buttons
 def reset_timer():
-    countdown(0)
+    # reset text, reset timer, reset checkmarks
+    window.after_cancel(TIMER)
+    timer_label.config(font=("Arial", 20, "bold"), text="TIMER", bg=YELLOW, fg=GREEN)
+    tick_label.config(font=("Arial", 20, "bold"), text="", bg=YELLOW, fg=GREEN)
+    canvas.itemconfig(timer, text='00:00')
+    global REPS
+    REPS = 0
 
 
 # creating buttons, event on button click
