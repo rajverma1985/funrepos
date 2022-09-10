@@ -3,11 +3,11 @@ import time
 from tkinter import *
 
 # TODO:
-#  1. add timer HEADING on top of tomato
-#  2. add reset and start labels
-#  3. add clock in the tomato for changes in time
-#  4.  add checkmark for cycles of work and break done
-#  5. use grid instead of pack for canvas.
+#  1. add timer HEADING on top of tomato DONE!
+#  2. add reset and start labels DONE!
+#  3. add clock in the tomato for changes in time DONE!
+#  4.  add checkmark for cycles of work and break done DONE!
+#  5. use grid instead of pack for canvas. DONE!
 
 # ---------------------------- CONSTANTS ------------------------------- #
 PINK = "#e2979c"
@@ -15,22 +15,14 @@ RED = "#e7305b"
 GREEN = "#9bdeac"
 YELLOW = "#f7f5dd"
 FONT_NAME = "Courier"
-WORK_MIN = .1
-SHORT_BREAK_MIN = .1
-LONG_BREAK_MIN = .1
+WORK_MIN = 25
+SHORT_BREAK_MIN = 5
+LONG_BREAK_MIN = 20
 REPS = 0
 TIMER = None
 
 
-# ---------------------------- TIMER RESET ------------------------------- #
-
-# ---------------------------- TIMER MECHANISM ------------------------------- # 
-
-# ---------------------------- COUNTDOWN MECHANISM ------------------------------- # 
-
-# ---------------------------- UI SETUP ------------------------------- #
-
-
+# Start time function
 def start_timer():
     global REPS
     REPS += 1
@@ -50,6 +42,7 @@ def start_timer():
         timer_label.config(text="TIME TO WORK", fg=GREEN)
 
 
+# countdown function to start the countdown for breaks and for work
 def countdown(count):
     minutes = math.floor(count / 60)
     secs = count % 60
@@ -86,7 +79,7 @@ tick_label = Label(font=("Arial", 20, "bold"), bg=YELLOW, fg=GREEN)
 tick_label.grid(column=1, row=3)
 
 
-# Start and reset buttons
+# Reset function for reset button
 def reset_timer():
     # reset text, reset timer, reset checkmarks
     window.after_cancel(TIMER)
