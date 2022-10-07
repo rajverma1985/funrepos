@@ -5,7 +5,7 @@ block_cipher = None
 
 
 a = Analysis(
-    ['promodoro/promod.py'],
+    ['promod.py'],
     pathex=[],
     binaries=[],
     datas=[],

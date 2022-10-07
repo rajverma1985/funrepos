@@ -1,5 +1,5 @@
 import math
-import time
+from pathlib import Path
 from tkinter import *
 
 # TODO:
@@ -9,7 +9,7 @@ from tkinter import *
 #  4.  add checkmark for cycles of work and break done DONE!
 #  5. use grid instead of pack for canvas. DONE!
 
-# ---------------------------- CONSTANTS ------------------------------- #
+# CONSTANTS
 PINK = "#e2979c"
 RED = "#e7305b"
 GREEN = "#9bdeac"
