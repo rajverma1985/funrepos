@@ -3,4 +3,5 @@
 *venv/
 build/
 dist/
+*.env
 *.idea/
