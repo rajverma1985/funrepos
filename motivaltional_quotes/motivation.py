@@ -39,5 +39,7 @@ def send_email():
             msg=message)
 
 
-if now.weekday() == 5:
+if now.weekday():
     send_email()
+
+# ToDO: identify day and send quotes every day:
