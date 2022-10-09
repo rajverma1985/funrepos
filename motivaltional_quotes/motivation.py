@@ -42,4 +42,5 @@ def send_email():
 if now.weekday():
     send_email()
 
-# ToDO: identify day and send quotes every day:
+# ToDO: identify day and send quotes every day
+# ToDo: add cloud support or auto scheduler
