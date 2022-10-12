@@ -20,6 +20,8 @@ birthday = {(data.day, data.month, ): data for (index, data) in df.iterrows()}
 if birth_dates in birthday:
     person = birthday[birth_dates]
     # get the name and replace that persons anme with a random letter
+    name = person['name']
+
 
 
 
