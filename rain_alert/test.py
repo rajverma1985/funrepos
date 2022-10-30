@@ -1,0 +1,3 @@
+d = {'coord': {'lon': 77.6693, 'lat': 13.0239}, 'weather': [{'id': 802, 'main': 'Clouds', 'description': 'scattered clouds', 'icon': '03n'}], 'base': 'stations', 'main': {'temp': 295.05, 'feels_like': 295.59, 'temp_min': 294.15, 'temp_max': 295.05, 'pressure': 1019, 'humidity': 88}, 'visibility': 6000, 'wind': {'speed': 2.06, 'deg': 100}, 'clouds': {'all': 40}, 'dt': 1666375960, 'sys': {'type': 1, 'id': 9205, 'country': 'IN', 'sunrise': 1666312818, 'sunset': 1666355244}, 'timezone': 19800, 'id': 1277333, 'name': 'Bengaluru', 'cod': 200}
+
+print(d['hourly'])

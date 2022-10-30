@@ -2,11 +2,10 @@ import os
 import requests
 from dotenv import load_dotenv
 
+# api documentation here: https://openweathermap.org/current
 # load all env variables
 load_dotenv()
-
-# example call: https://api.openweathermap.org/data/2.5/weather?lat={lat}&lon={lon}&exclude={part}&appid={API key}
-url = "https://api.openweathermap.org/data/2.5/weather"
+url = "https://api.openweathermap.org/data/2.5/onecall"
 params = {
             "lat": os.getenv('lat'),
             "lon": os.getenv('long'),
@@ -17,4 +16,4 @@ params = {
 response = requests.get(url, params=params)
 response.raise_for_status()
 data = response.json()
-print(data)
+print(data['weather'])
