@@ -41,6 +41,7 @@ response = requests.post(url=nutrition_url, json=params, headers=headers)
 response.raise_for_status()
 outs = response.json()
 
+# the input MUST be with workout if workouts is the sheet\project as a dict.
 sheety_input = {
     "workout":
         {
@@ -55,7 +56,7 @@ sheety_input = {
 sheety_url = os.getenv('sheety_url')
 bearer_headers = {"Authorization": os.getenv('sheety_bearer_token')}
 
-# this send the auth header token for authorization
+# this sends the auth header token for authorization
 post_request = requests.post(url=sheety_url, json=sheety_input, headers=bearer_headers)
 post_request.raise_for_status()
 
