@@ -60,3 +60,5 @@ bearer_headers = {"Authorization": os.getenv('sheety_bearer_token')}
 post_request = requests.post(url=sheety_url, json=sheety_input, headers=bearer_headers)
 post_request.raise_for_status()
 
+# get_request = requests.get(url=sheety_url, json=sheety_input, headers=bearer_headers)
+# print(get_request.json())
