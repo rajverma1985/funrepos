@@ -10,5 +10,3 @@ Practice and fun repos in python Projects in this repo:
 6. rain alert using smtp
 7. motivaltional_quotes using smtp
 8. birthday_wisher
-9. TBD
-10. TBD
